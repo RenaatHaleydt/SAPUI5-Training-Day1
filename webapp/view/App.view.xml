@@ -13,12 +13,16 @@
 								<Column width="12em">
 									<Text text="Company Name"/>
 								</Column>
+								<Column width="12em">
+									<Text text="Contact Name"/>
+								</Column>
 							</columns>
 							<items>
 								<ColumnListItem press="onItemClicked" type="Navigation">
 									<cells>
 										<Text text="{northwindModel>CustomerID}"/>
 										<Text text="{northwindModel>CompanyName}"/>
+										<Text text="{northwindModel>ContactName}"/>
 									</cells>
 								</ColumnListItem>
 							</items>
