@@ -5,6 +5,20 @@
 				<Page id="page" title="{i18n>title}">
 					<content>
 						<Button text="Say Hello" icon="sap-icon://hello-world" press="handleMessageToastPress"/>
+						<Table id="idCustomersTable" items="{ path: 'northwindModel>/Customers', filters: [{path: 'Country', operator: 'EQ', value1: 'USA'}]}">
+							<columns>
+								<Column width="12em">
+									<Text text="Customer ID"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem >
+									<cells>
+										<Text text="{northwindModel>CustomerID}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
 					</content>
 				</Page>
 			</pages>

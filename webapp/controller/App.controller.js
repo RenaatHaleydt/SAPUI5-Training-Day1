@@ -1,11 +1,24 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"sap/ui/core/mvc/Controller",
+	"sap/m/MessageToast",
+	"sap/m/MessageBox",
+	"sap/ui/model/json/JSONModel"
+], function (Controller, MessageToast, MessageBox, JSONModel) {
 	"use strict";
 
 	return Controller.extend("com.amista.Day1.controller.App", {
 		onInit: function () {
+			var oModel = this.getOwnerComponent().getModel("northwindModel");
+			this.getView().setModel(oModel, "northwindModel");
 			
+			var oData = {
+				"name": "",
+				"surname": "",
+				"age": null
+			};
+			
+			var oJSONModel = new JSONModel(oData);
+			this.getView().setModel(oJSONModel, "SimpleFormModel");
 		},
 		handleMessageToastPress: function (oEvent) {
 			var that = this;
