@@ -5,6 +5,8 @@
 				<Page id="page" title="{i18n>title}">
 					<content>
 						<Button text="Say hello" icon="sap-icon://hello-world" press="onPressSayHelloButton"/>
+						
+						<Text text="{randomJSONModel>/firstname}"/>
 					</content>
 				</Page>
 			</pages>
