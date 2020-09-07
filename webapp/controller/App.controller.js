@@ -3,7 +3,9 @@ sap.ui.define([
 	"sap/m/MessageToast",
 	"sap/m/MessageBox",
 	"sap/ui/model/json/JSONModel",
-], function (Controller, MessageToast, MessageBox, JSONModel) {
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator"
+], function (Controller, MessageToast, MessageBox, JSONModel,  Filter, FilterOperator) {
 	"use strict";
 
 	return Controller.extend("com.amista.Day1.controller.App", {
@@ -55,5 +57,20 @@ sap.ui.define([
 		getResourceBundle: function () {
 			return this.getOwnerComponent().getModel("i18n").getResourceBundle();
 		},
+		onSearchList: function (oEvent) {
+			// add filter for search
+			var aFilters = [];
+			var sQuery = oEvent.getSource().getValue();
+			if (sQuery && sQuery.length > 0) {
+				var filter = new Filter("FirstName", FilterOperator.Contains, sQuery);
+				aFilters.push(filter);
+			}
+
+			// update list binding
+			var oList = this.byId("idList");
+			var oBinding = oList.getBinding("items");
+			oBinding.filter(aFilters);
+		},
+
 	});
 });

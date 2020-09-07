@@ -1,5 +1,5 @@
 <mvc:View controllerName="com.amista.Day1.controller.App" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-	xmlns="sap.m" xmlns:uxap="sap.uxap">
+	xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:smartList="sap.ui.comp.smartlist">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
@@ -70,6 +70,17 @@
 															<Button text="{i18n>save}" icon="sap-icon://save" press="onSavePressed"/>
 														</f:content>
 													</f:SimpleForm>
+													<VBox>
+														<SearchField liveChange="onSearchList" width="50%"/>
+														<List id="idList" items="{northwindModel>/Employees}" growing="true" growingThreshold="10">
+															<infoToolbar>
+																<OverflowToolbar visible="false" id="idInfoToolbar">
+																	<Label id="idFilterLabel"/>
+																</OverflowToolbar>
+															</infoToolbar>
+															<StandardListItem title="{northwindModel>FirstName}" description="{northwindModel>LastName}"/>
+														</List>
+													</VBox>
 												</VBox>
 											</uxap:blocks>
 										</uxap:ObjectPageSubSection>
