@@ -2,7 +2,7 @@
 	xmlns:unified="sap.ui.unified" xmlns:core="sap.ui.core">
 	<VBox>
 		<SearchField liveChange="onSearchList" width="50%"/>
-		<List id="idList" items="{northwindModel>/Employees}" growing="true" growingThreshold="10">
+		<List id="idList" items="{path: 'northwindModel>/Employees', sorter: {path: 'BirthDate'}}" growing="true" growingThreshold="10">
 			<infoToolbar>
 				<OverflowToolbar visible="false" id="idInfoToolbar">
 					<Label id="idFilterLabel"/>
