@@ -35,11 +35,11 @@
 											</Table>
 										</VBox>
 									</IconTabFilter>
-									<IconTabFilter text="{i18n>form}" key="attachments">
-										<VBox>
+									<IconTabFilter text="{i18n>form}" key="form">
 											<mvc:XMLView viewName="com.amista.Day1.view.Form"/>
+									</IconTabFilter>
+									<IconTabFilter text="{i18n>aggregationList}" key="list">
 											<core:Fragment fragmentName="com.amista.Day1.view.fragment.EmployeeList" type="XML"/>
-										</VBox>
 									</IconTabFilter>
 								</items>
 							</IconTabBar>

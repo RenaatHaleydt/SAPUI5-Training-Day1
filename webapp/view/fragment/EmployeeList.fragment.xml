@@ -8,7 +8,7 @@
 					<Label id="idFilterLabel"/>
 				</OverflowToolbar>
 			</infoToolbar>
-			<StandardListItem title="{northwindModel>FirstName}" description="{northwindModel>LastName}"/>
+			<StandardListItem title="{northwindModel>FirstName}" description="{northwindModel>LastName}" info="{northwindModel>Country}" infoState="{= ${northwindModel>Country} === 'USA' ? 'Error' : 'Success'}"/>
 		</List>
 	</VBox>
 </core:FragmentDefinition>
