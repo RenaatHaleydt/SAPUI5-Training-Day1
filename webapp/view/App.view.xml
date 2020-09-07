@@ -8,13 +8,13 @@
 						<Table id="idCustomersTable" items="{ path: 'northwindModel>/Customers', filters: [{path: 'Country', operator: 'EQ', value1: 'USA'}]}">
 							<columns>
 								<Column width="12em">
-									<Text text="{i18n>CustomerID}"/>
+									<Text text="{i18n>customerID}"/>
 								</Column>
 								<Column width="12em">
-									<Text text="{i18n>CompanyName}"/>
+									<Text text="{i18n>companyName}"/>
 								</Column>
 								<Column width="12em">
-									<Text text="{i18n>ContactName}"/>
+									<Text text="{i18n>contactName}"/>
 								</Column>
 							</columns>
 							<items>
@@ -29,11 +29,11 @@
 						</Table>
 						<f:SimpleForm id="SimpleFormToolbar" editable="true" layout="ResponsiveGridLayout">
 							<f:content>
-								<Label text="{i18n>Name}"/>
+								<Label text="{i18n>name}"/>
 								<Input value="{SimpleFormModel>/name}"/>
-								<Label text="{i18n>Surname}"/>
+								<Label text="{i18n>surname}"/>
 								<Input value="{SimpleFormModel>/surname}"></Input>
-								<Label text="{i18n>Age}"/>
+								<Label text="{i18n>age}"/>
 								<Input value="{SimpleFormModel>/age}"/>
 								<Button text="Save" icon="sap-icon://save" press="onSavePressed"/>
 							</f:content>
