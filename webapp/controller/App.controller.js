@@ -8,7 +8,7 @@ sap.ui.define([
 
 	return Controller.extend("com.amista.Day1.controller.App", {
 		onInit: function () {
-			var oModel = this.getOwnerComponent().getModel("northwindModel");
+			var oModel = this.getOwnerComponent().getModel("NorthwindModel");
 			this.getView().setModel(oModel, "northwindModel");
 			
 			var oData = {
@@ -41,5 +41,11 @@ sap.ui.define([
 		showMessageToast: function (sMessage) {
 			sap.m.MessageToast.show(sMessage);
 		},
+		onItemClicked: function(oEvent){
+			var oObject = this.getOwnerComponent().getModel("NorthwindModel").getProperty(
+					oEvent.getSource().getBindingContextPath() // "/Customer('AFKI')"
+				);
+			this.showMessageToast("The country = " + oObject.Country);
+		}
 	});
 });
