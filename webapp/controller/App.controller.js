@@ -12,15 +12,6 @@ sap.ui.define([
 		onInit: function () {
 			var oModel = this.getOwnerComponent().getModel("NorthwindModel");
 			this.getView().setModel(oModel, "northwindModel");
-
-			var oData = {
-				"name": "",
-				"surname": "",
-				"age": null
-			};
-
-			var oJSONModel = new JSONModel(oData);
-			this.getView().setModel(oJSONModel, "SimpleFormModel");
 		},
 		handleMessageToastPress: function (oEvent) {
 			var that = this;
@@ -48,11 +39,6 @@ sap.ui.define([
 				oEvent.getSource().getBindingContextPath() // "/Customer('AFKI')"
 			);
 			this.showMessageToast("The country = " + oObject.Country);
-		},
-		onSavePressed: function(oEvent){
-			var oSimpleFormData = this.getView().getModel("SimpleFormModel").getData();
-			var sMessage = this.getResourceBundle().getText("greetingMessageName", [oSimpleFormData.name]);
-			this.showMessageToast(sMessage);
 		},
 		getResourceBundle: function () {
 			return this.getOwnerComponent().getModel("i18n").getResourceBundle();

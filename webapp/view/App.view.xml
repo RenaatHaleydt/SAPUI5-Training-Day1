@@ -1,5 +1,5 @@
-<mvc:View controllerName="com.amista.Day1.controller.App" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-	xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:smartList="sap.ui.comp.smartlist">
+<mvc:View controllerName="com.amista.Day1.controller.App"  xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m" >
 	<Shell id="shell">
 		<App id="app">
 			<pages>
@@ -37,17 +37,7 @@
 									</IconTabFilter>
 									<IconTabFilter text="{i18n>form}" key="attachments">
 										<VBox>
-											<f:SimpleForm id="SimpleFormToolbar" editable="true" layout="ResponsiveGridLayout">
-												<f:content>
-													<Label text="{i18n>name}"/>
-													<Input value="{SimpleFormModel>/name}"/>
-													<Label text="{i18n>surname}"/>
-													<Input value="{SimpleFormModel>/surname}"></Input>
-													<Label text="{i18n>age}"/>
-													<Input value="{SimpleFormModel>/age}"/>
-													<Button text="{i18n>save}" icon="sap-icon://save" press="onSavePressed"/>
-												</f:content>
-											</f:SimpleForm>
+											<mvc:XMLView viewName="com.amista.Day1.view.Form"/>
 											<VBox>
 												<SearchField liveChange="onSearchList" width="50%"/>
 												<List id="idList" items="{northwindModel>/Employees}" growing="true" growingThreshold="10">
