@@ -5,27 +5,28 @@ sap.ui.define([
 
 	return Controller.extend("com.amista.Day1.controller.App", {
 		onInit: function () {
-			// this = the current environment
-			var that = this;
 			
-			// path to find the model we declared in directory model
-			var sRootPath = jQuery.sap.getModulePath("com.amista.Day1"); // Used to load the models that are predefined in the application
-			
-			// Loading our RandomModel
-			var oRandomModel = new sap.ui.model.json.JSONModel([sRootPath, "model/RandomModel.json"].join("/"));
-			
-			// event when the RandomModel is fully loaded
-			oRandomModel.attachRequestCompleted(function () {
-				// We bind the RandomModel to the View of this controller (the App.view.xml) and call it randomJSONModel
-				that.getView().setModel(oRandomModel, "randomJSONModel");
-			});
-			
-			// This is another way to define a JSONModel and bind it to the view
-			this.getView().setModel(new sap.ui.model.json.JSONModel({}), "errorModel");
 		},
-		onPressSayHelloButton: function(oEvent){
-			var sMessage = "Good afternoon " + "Renaat";
+		handleMessageToastPress: function (oEvent) {
+			var that = this;
+			var msg = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy\r\n eirmod.';
+			sap.m.MessageBox.confirm("Do you want to display the message toast?", {
+				actions: [sap.m.MessageBox.Action.OK,
+					sap.m.MessageBox.Action.Cancel
+				],
+				emphasizedAction: sap.m.MessageBox.Action.OK,
+				onClose: function (oAction) {
+					if(oAction == "OK"){
+						that.showMessageToast(msg);
+					}
+				}
+			});
+			var oButton = oEvent.getSource();
+			oButton.setText("Press me again");
+			oButton.setType("Accept");
+		},
+		showMessageToast: function (sMessage) {
 			sap.m.MessageToast.show(sMessage);
-		}
+		},
 	});
 });

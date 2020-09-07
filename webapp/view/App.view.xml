@@ -4,9 +4,7 @@
 			<pages>
 				<Page id="page" title="{i18n>title}">
 					<content>
-						<Button text="Say hello" icon="sap-icon://hello-world" press="onPressSayHelloButton"/>
-						
-						<Text text="{randomJSONModel>/firstname}"/>
+						<Button text="Say Hello" icon="sap-icon://hello-world" press="handleMessageToastPress"/>
 					</content>
 				</Page>
 			</pages>
