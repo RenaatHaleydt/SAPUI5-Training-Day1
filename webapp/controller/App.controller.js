@@ -4,11 +4,14 @@ sap.ui.define([
 	"sap/m/MessageBox",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator"
-], function (Controller, MessageToast, MessageBox, JSONModel,  Filter, FilterOperator) {
+	"sap/ui/model/FilterOperator",
+	"../model/formatter"
+], function (Controller, MessageToast, MessageBox, JSONModel,  Filter, FilterOperator, formatter) {
 	"use strict";
 
 	return Controller.extend("com.amista.Day1.controller.App", {
+		//Store the loaded formatter in a local property so it can be loaded in the view
+		formatter: formatter,
 		onInit: function () {
 			var oModel = this.getOwnerComponent().getModel("NorthwindModel");
 			this.getView().setModel(oModel, "northwindModel");

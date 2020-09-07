@@ -27,7 +27,7 @@
 													<ColumnListItem press="onItemClicked" type="Navigation">
 														<cells>
 															<Text text="{northwindModel>CustomerID}"/>
-															<Text text="{northwindModel>CompanyName}"/>
+															<Text text="{path: 'northwindModel>CompanyName', formatter: '.formatter.capitalString'}"/>
 															<Text text="{northwindModel>ContactName}"/>
 														</cells>
 													</ColumnListItem>
