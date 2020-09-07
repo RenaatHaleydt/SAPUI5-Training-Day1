@@ -22,8 +22,8 @@ sap.ui.define([
 		},
 		handleMessageToastPress: function (oEvent) {
 			var that = this;
-			var msg = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy\r\n eirmod.';
-			sap.m.MessageBox.confirm("Do you want to display the message toast?", {
+			var msg = this.getResourceBundle().getText("MessageToastExample");
+			sap.m.MessageBox.confirm(this.getResourceBundle().getText("ConfirmQuestion"), {
 				actions: [sap.m.MessageBox.Action.OK,
 					sap.m.MessageBox.Action.Cancel
 				],
@@ -35,7 +35,7 @@ sap.ui.define([
 				}
 			});
 			var oButton = oEvent.getSource();
-			oButton.setText("Press me again");
+			oButton.setText(this.getResourceBundle().getText("DifferentText"));
 			oButton.setType("Accept");
 		},
 		showMessageToast: function (sMessage) {
@@ -49,8 +49,11 @@ sap.ui.define([
 		},
 		onSavePressed: function(oEvent){
 			var oSimpleFormData = this.getView().getModel("SimpleFormModel").getData();
-			var sMessage = "Hello " + oSimpleFormData.name;
+			var sMessage = this.getResourceBundle().getText("GreetingMessageName", [oSimpleFormData.name]);
 			this.showMessageToast(sMessage);
-		}
+		},
+		getResourceBundle: function () {
+			return this.getOwnerComponent().getModel("i18n").getResourceBundle();
+		},
 	});
 });
