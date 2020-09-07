@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.amista.Day1.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View controllerName="com.amista.Day1.controller.App" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
@@ -27,6 +27,17 @@
 								</ColumnListItem>
 							</items>
 						</Table>
+						<f:SimpleForm id="SimpleFormToolbar" editable="true" layout="ResponsiveGridLayout">
+							<f:content>
+								<Label text="Name"/>
+								<Input value="{SimpleFormModel>/name}"/>
+								<Label text="Surname"/>
+								<Input value="{SimpleFormModel>/surname}"></Input>
+								<Label text="Age"/>
+								<Input value="{SimpleFormModel>/age}"/>
+								<Button text="Save" icon="sap-icon://save" press="onSavePressed"/>
+							</f:content>
+						</f:SimpleForm>
 					</content>
 				</Page>
 			</pages>
