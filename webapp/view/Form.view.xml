@@ -1,24 +1,17 @@
-<mvc:View
-   controllerName="com.amista.Day1.controller.Form"
-   xmlns="sap.m"
-   xmlns:mvc="sap.ui.core.mvc"
-   xmlns:f="sap.ui.layout.form">
-   <Panel
-      headerText="{i18n>helloPanelTitle}"
-      class="sapUiResponsiveMargin"
-      width="auto" >
-      <content>
-         <f:SimpleForm id="SimpleFormToolbar" editable="true" layout="ResponsiveGridLayout">
-												<f:content>
-													<Label text="{i18n>name}"/>
-													<Input value="{SimpleFormModel>/name}"/>
-													<Label text="{i18n>surname}"/>
-													<Input value="{SimpleFormModel>/surname}"></Input>
-													<Label text="{i18n>age}"/>
-													<Input value="{SimpleFormModel>/age}"/>
-													<Button text="{i18n>save}" icon="sap-icon://save" press="onSavePressed"/>
-												</f:content>
-											</f:SimpleForm>
-      </content>
-   </Panel>
+<mvc:View controllerName="com.amista.Day1.controller.Form" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form">
+	<Panel headerText="{i18n>helloPanelTitle}" class="sapUiResponsiveMargin" width="auto">
+		<content>
+			<f:SimpleForm id="SimpleFormToolbar" editable="true" layout="ResponsiveGridLayout">
+				<f:content>
+					<Label text="{i18n>name}"/>
+					<Input value="{SimpleFormModel>/name}"/>
+					<Label text="{i18n>surname}" required="true"/>
+					<Input value="{SimpleFormModel>/surname}"></Input>
+					<Label text="{i18n>age}"/>
+					<Input value="{SimpleFormModel>/age}"/>
+					<Button text="{i18n>save}" icon="sap-icon://save" press="onSavePressed"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+	</Panel>
 </mvc:View>

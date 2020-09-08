@@ -110,5 +110,6 @@ sap.ui.define([
 		onLiveChangeFilter: function (oEvent) {
 			FilterHelper.onLiveChangeFilter(this, oEvent);
 		},
+
 	});
 });
