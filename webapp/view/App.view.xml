@@ -17,10 +17,6 @@
 														<Title text="{parts: ['i18n>titleCustomerTable']}"/>
 														<ToolbarSpacer/>
 														<Button icon="sap-icon://sort" tooltip="{i18n>btnSortCustomers}" type="Transparent" press="onPressSortCustomers"/>
-														<!--<Button icon="{= ${viewModel>/ShowInactiveCEWFilters} ? 'sap-icon://clear-filter' : 'sap-icon://filter'}"-->
-														<!--	tooltip="{= ${viewModel>/ShowInactiveCEWFilters} ? ${i18n>btnHideFiltersInactiveCEW} : ${i18n>btnShowFiltersInactiveCEW}}"-->
-														<!--	type="Transparent" press="onPressShowOrHideInactiveFilters"/>-->
-														<!--<Button icon="sap-icon://reset" tooltip="{i18n>btnResetInactiveCEW}" type="Transparent" press="onPressInactiveCEWResetData"/>-->
 													</OverflowToolbar>
 												</headerToolbar>
 												<columns>
@@ -51,6 +47,9 @@
 									</IconTabFilter>
 									<IconTabFilter text="{i18n>aggregationList}" key="list">
 										<core:Fragment fragmentName="com.amista.Day1.view.fragment.EmployeeList" type="XML"/>
+									</IconTabFilter>
+									<IconTabFilter text="{i18n>covid}" key="list">
+										<Button text="{i18n>CovidCasesToday}" press="showCovidCasesUSAToday"/>
 									</IconTabFilter>
 								</items>
 							</IconTabBar>

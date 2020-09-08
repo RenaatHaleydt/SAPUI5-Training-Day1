@@ -7,13 +7,15 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator",
 	"../model/formatter",
 	"sap/ui/model/Sorter",
-], function (Controller, MessageToast, MessageBox, JSONModel,  Filter, FilterOperator, formatter, Sorter) {
+	"../util/AjaxHelper",
+], function (Controller, MessageToast, MessageBox, JSONModel,  Filter, FilterOperator, formatter, Sorter, AjaxHelper) {
 	"use strict";
 
 	return Controller.extend("com.amista.Day1.controller.App", {
 		//Store the loaded formatter in a local property so it can be loaded in the view
 		formatter: formatter,
 		onInit: function () {
+			var that = this;
 			var oModel = this.getOwnerComponent().getModel("NorthwindModel");
 			this.getView().setModel(oModel, "northwindModel");
 		},
@@ -73,6 +75,14 @@ sap.ui.define([
 			var sSortKey = oEvent.getParameter("sortItem").getKey();
 			var bSortDescending = oEvent.getParameter("sortDescending");
 			oBinding.sort(new Sorter(sSortKey, bSortDescending));
+		},
+		showCovidCasesUSAToday: function(oEvent){
+			var that = this;
+			AjaxHelper.getData("/CovidAPI/v1/us/current.json").then(function(oData){
+				that.showMessageToast("Positive cases today in USA" + oData[0].positive);
+			}).catch(function(oError){
+				
+			});
 		}
 	});
 });

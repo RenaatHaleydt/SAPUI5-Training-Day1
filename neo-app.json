@@ -44,7 +44,15 @@
         "name": "Northwind"
       },
       "description": "Northwind"
-    }
+    },
+    {
+		"path": "/CovidAPI",
+		"target": {
+			"type": "destination",
+			"name": "CovidAPI"
+		},
+		"description": ""
+	}
   ],
   "sendWelcomeFileRedirect": true
 }
