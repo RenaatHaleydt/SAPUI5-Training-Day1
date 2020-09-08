@@ -11,7 +11,8 @@
 								<items>
 									<IconTabFilter text="{i18n>tableSection}" key="info">
 										<VBox>
-											<Table id="idCustomersTable" items="{ path: 'northwindModel>/Customers', filters: [{path: 'Country', operator: 'EQ', value1: 'USA'}]}">
+											<core:Fragment fragmentName="com.amista.Day1.view.fragment.headerFilterCustomerTable" type="XML"/>
+											<Table id="idCustomersTable" items="{ path: 'northwindModel>/Customers'}">
 												<headerToolbar>
 													<OverflowToolbar>
 														<Title text="{parts: ['i18n>titleCustomerTable']}"/>
@@ -49,7 +50,7 @@
 										<core:Fragment fragmentName="com.amista.Day1.view.fragment.EmployeeList" type="XML"/>
 									</IconTabFilter>
 									<IconTabFilter text="{i18n>covid}" key="list">
-										<Button text="{i18n>CovidCasesToday}" press="showCovidCasesUSAToday"/>
+										<Button text="{i18n>covidCasesToday}" press="showCovidCasesUSAToday"/>
 									</IconTabFilter>
 								</items>
 							</IconTabBar>

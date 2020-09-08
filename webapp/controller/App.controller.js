@@ -8,7 +8,8 @@ sap.ui.define([
 	"../model/formatter",
 	"sap/ui/model/Sorter",
 	"../util/AjaxHelper",
-], function (Controller, MessageToast, MessageBox, JSONModel,  Filter, FilterOperator, formatter, Sorter, AjaxHelper) {
+	"com/amista/Day1/util/FilterHelper",
+], function (Controller, MessageToast, MessageBox, JSONModel, Filter, FilterOperator, formatter, Sorter, AjaxHelper, FilterHelper) {
 	"use strict";
 
 	return Controller.extend("com.amista.Day1.controller.App", {
@@ -18,6 +19,28 @@ sap.ui.define([
 			var that = this;
 			var oModel = this.getOwnerComponent().getModel("NorthwindModel");
 			this.getView().setModel(oModel, "northwindModel");
+
+			var aCountries = {
+				"Countries": [{
+					"name": "USA",
+					"active": true
+				}, {
+					"name": "Belgium",
+					"active": false
+				}, {
+					"name": "Italy",
+					"active": false
+				}, {
+					"name": "Germany",
+					"active": true
+				}, {
+					"name": "UK",
+					"active": true
+				}]
+			};
+
+			var oJSONModel = new JSONModel(aCountries);
+			this.getView().setModel(oJSONModel, "CountryModel");
 		},
 		handleMessageToastPress: function (oEvent) {
 			var that = this;
@@ -63,7 +86,7 @@ sap.ui.define([
 			var oBinding = oList.getBinding("items");
 			oBinding.filter(aFilters);
 		},
-		onPressSortCustomers: function(oEvent){
+		onPressSortCustomers: function (oEvent) {
 			if (!this._oCustomerSortDialog) {
 				this._oCustomerSortDialog = sap.ui.xmlfragment("com.amista.Day1.view.fragment.CustomerSorter", this);
 				this.getView().addDependent(this._oCustomerSortDialog);
@@ -76,13 +99,16 @@ sap.ui.define([
 			var bSortDescending = oEvent.getParameter("sortDescending");
 			oBinding.sort(new Sorter(sSortKey, bSortDescending));
 		},
-		showCovidCasesUSAToday: function(oEvent){
+		showCovidCasesUSAToday: function (oEvent) {
 			var that = this;
-			AjaxHelper.getData("/CovidAPI/v1/us/current.json").then(function(oData){
-				that.showMessageToast("Positive cases today in USA" + oData[0].positive);
-			}).catch(function(oError){
-				
+			AjaxHelper.getData("/CovidAPI/v1/us/current.json").then(function (oData) {
+				that.showMessageToast("Positive cases today in USA:\n " + oData[0].positive);
+			}).catch(function (oError) {
+
 			});
-		}
+		},
+		onLiveChangeFilter: function (oEvent) {
+			FilterHelper.onLiveChangeFilter(this, oEvent);
+		},
 	});
 });

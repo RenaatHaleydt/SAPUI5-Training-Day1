@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<Panel headerText="Filters" expanded="false" expandable="true">
+		<l:Grid defaultSpan="XL3 L4 M5 S12">
+			<VBox>
+				<Label text="{i18n>filterCountry}"/>
+				<Select id="filterCountry" width="100%" change="onLiveChangeFilter"
+					items="{ path: 'CountryModel>/Countries'}"
+					forceSelection="false">
+					<core:Item key="{CountryModel>name}" text="{CountryModel>name}"/>
+				</Select>
+			</VBox>
+			<VBox>
+				<Label text="{i18n>filterCity}"/>
+				<Input id="filterCity" liveChange="onLiveChangeFilter"
+					placeholder="" type="Text"/>
+			</VBox>
+		</l:Grid>
+	</Panel>
+</core:FragmentDefinition>

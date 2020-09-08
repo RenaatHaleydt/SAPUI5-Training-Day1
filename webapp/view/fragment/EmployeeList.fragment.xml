@@ -8,7 +8,9 @@
 					<Label id="idFilterLabel"/>
 				</OverflowToolbar>
 			</infoToolbar>
-			<StandardListItem title="{northwindModel>FirstName} {northwindModel>LastName}" description="{ path: 'northwindModel>BirthDate', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { UTC: true, pattern: 'dd/MM/yyyy'} }" info="{northwindModel>Country}" infoState="{= ${northwindModel>Country} === 'USA' ? 'Error' : 'Success'}"/>
+			<StandardListItem title="{northwindModel>FirstName} {northwindModel>LastName}"
+				description="{ path: 'northwindModel>BirthDate', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { UTC: true, pattern: 'dd/MM/yyyy'} }"
+				info="{northwindModel>Country}" infoState="{= ${northwindModel>Country} === 'USA' ? 'Error' : 'Success'}"/>
 		</List>
 	</VBox>
 </core:FragmentDefinition>
