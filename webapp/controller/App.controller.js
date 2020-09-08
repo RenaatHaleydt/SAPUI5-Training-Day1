@@ -5,8 +5,9 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
-	"../model/formatter"
-], function (Controller, MessageToast, MessageBox, JSONModel,  Filter, FilterOperator, formatter) {
+	"../model/formatter",
+	"sap/ui/model/Sorter",
+], function (Controller, MessageToast, MessageBox, JSONModel,  Filter, FilterOperator, formatter, Sorter) {
 	"use strict";
 
 	return Controller.extend("com.amista.Day1.controller.App", {
@@ -60,6 +61,18 @@ sap.ui.define([
 			var oBinding = oList.getBinding("items");
 			oBinding.filter(aFilters);
 		},
-
+		onPressSortCustomers: function(oEvent){
+			if (!this._oCustomerSortDialog) {
+				this._oCustomerSortDialog = sap.ui.xmlfragment("com.amista.Day1.view.fragment.CustomerSorter", this);
+				this.getView().addDependent(this._oCustomerSortDialog);
+			}
+			this._oCustomerSortDialog.open();
+		},
+		onCustomerSortConfirmPressed: function (oEvent) {
+			var oBinding = this.byId("idCustomersTable").getBinding("items");
+			var sSortKey = oEvent.getParameter("sortItem").getKey();
+			var bSortDescending = oEvent.getParameter("sortDescending");
+			oBinding.sort(new Sorter(sSortKey, bSortDescending));
+		}
 	});
 });

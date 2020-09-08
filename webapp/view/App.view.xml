@@ -1,5 +1,5 @@
-<mvc:View controllerName="com.amista.Day1.controller.App"  xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-	xmlns="sap.m" xmlns:core="sap.ui.core">
+<mvc:View controllerName="com.amista.Day1.controller.App" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:core="sap.ui.core">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
@@ -12,6 +12,17 @@
 									<IconTabFilter text="{i18n>tableSection}" key="info">
 										<VBox>
 											<Table id="idCustomersTable" items="{ path: 'northwindModel>/Customers', filters: [{path: 'Country', operator: 'EQ', value1: 'USA'}]}">
+												<headerToolbar>
+													<OverflowToolbar>
+														<Title text="{parts: ['i18n>titleCustomerTable']}"/>
+														<ToolbarSpacer/>
+														<Button icon="sap-icon://sort" tooltip="{i18n>btnSortCustomers}" type="Transparent" press="onPressSortCustomers"/>
+														<!--<Button icon="{= ${viewModel>/ShowInactiveCEWFilters} ? 'sap-icon://clear-filter' : 'sap-icon://filter'}"-->
+														<!--	tooltip="{= ${viewModel>/ShowInactiveCEWFilters} ? ${i18n>btnHideFiltersInactiveCEW} : ${i18n>btnShowFiltersInactiveCEW}}"-->
+														<!--	type="Transparent" press="onPressShowOrHideInactiveFilters"/>-->
+														<!--<Button icon="sap-icon://reset" tooltip="{i18n>btnResetInactiveCEW}" type="Transparent" press="onPressInactiveCEWResetData"/>-->
+													</OverflowToolbar>
+												</headerToolbar>
 												<columns>
 													<Column width="12em">
 														<Text text="{i18n>customerID}"/>
@@ -36,10 +47,10 @@
 										</VBox>
 									</IconTabFilter>
 									<IconTabFilter text="{i18n>form}" key="form">
-											<mvc:XMLView viewName="com.amista.Day1.view.Form"/>
+										<mvc:XMLView viewName="com.amista.Day1.view.Form"/>
 									</IconTabFilter>
 									<IconTabFilter text="{i18n>aggregationList}" key="list">
-											<core:Fragment fragmentName="com.amista.Day1.view.fragment.EmployeeList" type="XML"/>
+										<core:Fragment fragmentName="com.amista.Day1.view.fragment.EmployeeList" type="XML"/>
 									</IconTabFilter>
 								</items>
 							</IconTabBar>
